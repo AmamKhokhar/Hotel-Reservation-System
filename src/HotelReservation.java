@@ -7,9 +7,10 @@ public class HotelReservation {
     private static final String url = "jdbc:mysql://localhost:3306/hotel_db";
     private static final String username = "root";
     private static final String password = "amam";
+    private static int id;
+
 
     public static void main(String[] args) {
-
 
         try{
             Class.forName("com.mysql.jdbc.Driver");
@@ -60,12 +61,9 @@ public class HotelReservation {
         }
     }
 
-    static int id;
-
     public static void viewReservations(Connection connection){
 
         String query = "SELECT * FROM reservations";
-
        try{
            Statement stmt = connection.createStatement();
            ResultSet rs = stmt.executeQuery(query);
@@ -86,12 +84,11 @@ public class HotelReservation {
                System.out.println();
 
            }
-
        }catch (SQLException e){
            System.out.println(e.getMessage());
        }
-
     }
+
     public static void addReservation(Connection connection,Scanner scanner){
 
        try{
@@ -116,6 +113,7 @@ public class HotelReservation {
            System.out.println(e.getMessage());
        }
     }
+
     public static void updateReservation(Connection connection,Scanner scanner){
 
         System.out.println("Enter reservation ID: ");
@@ -145,6 +143,7 @@ public class HotelReservation {
             }
         }
     }
+
     public static void deleteReservation(Connection connection,Scanner scanner){
 
         System.out.println("Enter reservation id to remove: ");
@@ -167,6 +166,7 @@ public class HotelReservation {
             }
         }
     }
+
     public static void checkRoomNo(Connection connection,Scanner scanner){
 
         System.out.print("Enter reservation id: ");
@@ -188,9 +188,8 @@ public class HotelReservation {
                 System.out.println(e.getMessage());
             }
         }
-
-
     }
+
     public static void exit(){
         int i = 5;
         System.out.print("Existing");
@@ -205,6 +204,7 @@ public class HotelReservation {
             System.out.println(e.getMessage());
         }
     }
+
     public static boolean idExist(Connection connection,int id){
 
         try{
@@ -217,6 +217,5 @@ public class HotelReservation {
             System.out.println(e.getMessage());
             return false;
         }
-
     }
 }
